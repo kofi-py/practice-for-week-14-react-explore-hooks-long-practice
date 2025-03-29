@@ -6,6 +6,16 @@ import "./ProductView.css";
 function ProductView({ products }) {
   // TODO: Replace with state variable
   const [sideOpen, setSideOpen] = React.useState(true);
+  // TODO: Implement state variable for selected product
+  const [selectedProduct, setSelectedProduct] = React.useState(null);
+
+  const handleProductClick = (product) => {
+    console.log("SELECT PRODUCT", product);
+    setSelectedProduct(product);
+    if (!sideOpen) {
+      setSideOpen(true);
+    }
+  };
 
   return (
     <div className="product-view">
@@ -16,7 +26,7 @@ function ProductView({ products }) {
             <ProductListItem
               key={item.id}
               product={item}
-              onClick={() => console.log("SELECT PRODUCT", item)}
+              onClick={() => handleProductClick(item)}
             />
           ))}
         </div>
